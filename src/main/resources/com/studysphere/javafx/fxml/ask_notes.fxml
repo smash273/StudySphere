@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.studysphere.javafx.controller.AskNotesController" style="-fx-background-color: #0b1120;">
+
+    <!-- Sidebar -->
+    <VBox prefWidth="220" spacing="4" styleClass="sidebar">
+        <Label text="StudySphere" styleClass="brand-title"/>
+        <Label text="Learning Platform" styleClass="brand-subtitle"/>
+        <Button text="📊  Dashboard" styleClass="nav-button" maxWidth="Infinity" onAction="#handleBackToDashboard"/>
+        <Button text="📤  Upload Material" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToUpload"/>
+        <Button text="📝  View Notes" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToNotes"/>
+        <Button text="💬  Ask My Notes" styleClass="nav-button-active,nav-button" maxWidth="Infinity"/>
+        <Button text="🔄  Revision" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToRevision"/>
+        <Button text="🎓  CSE1007 Demo" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToCSE1007"/>
+        <Button text="⚙  Settings" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToSettings"/>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Button text="🚪  Logout" styleClass="nav-button" maxWidth="Infinity" onAction="#handleLogout"/>
+    </VBox>
+
+    <!-- Content -->
+    <VBox HBox.hgrow="ALWAYS" spacing="0" styleClass="content-area">
+        <HBox styleClass="topbar" alignment="CENTER_LEFT">
+            <VBox>
+                <Label text="Ask My Notes" styleClass="screen-title"/>
+                <Label text="Ask questions grounded in your uploaded study material" styleClass="screen-subtitle"/>
+            </VBox>
+        </HBox>
+
+        <VBox spacing="20" style="-fx-padding: 28;" VBox.vgrow="ALWAYS">
+            <!-- Question Input -->
+            <VBox styleClass="card" spacing="12">
+                <Label text="Your Question" styleClass="card-title"/>
+                <HBox spacing="12">
+                    <TextField fx:id="questionField" promptText="e.g. What are the four conditions for deadlock?"
+                               HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="askButton" text="Ask" onAction="#handleAskQuestion" styleClass="btn-primary"/>
+                </HBox>
+                <Label text="Try a sample question:" style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+                <HBox spacing="8">
+                    <Button text="What is normalization?" onAction="#handleSampleQuestion" styleClass="btn-secondary"/>
+                    <Button text="Explain process states" onAction="#handleSampleQuestion" styleClass="btn-secondary"/>
+                    <Button text="What is polymorphism?" onAction="#handleSampleQuestion" styleClass="btn-secondary"/>
+                </HBox>
+            </VBox>
+
+            <!-- Answer Area -->
+            <VBox styleClass="card" spacing="10" VBox.vgrow="ALWAYS">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="Answer" styleClass="card-title"/>
+                    <ProgressIndicator fx:id="loadingIndicator" maxWidth="24" maxHeight="24"/>
+                </HBox>
+                <TextArea fx:id="answerArea" wrapText="true" editable="false" VBox.vgrow="ALWAYS"
+                          promptText="Your answer will appear here..."
+                          style="-fx-control-inner-background: #0f172a;"/>
+                <VBox fx:id="citationsBox" spacing="4"/>
+            </VBox>
+        </VBox>
+    </VBox>
+</HBox>

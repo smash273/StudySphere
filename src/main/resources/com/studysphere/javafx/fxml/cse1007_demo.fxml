@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.studysphere.javafx.controller.CSE1007DemoController" style="-fx-background-color: #0b1120;">
+
+    <!-- Sidebar -->
+    <VBox prefWidth="220" spacing="4" styleClass="sidebar">
+        <Label text="StudySphere" styleClass="brand-title"/>
+        <Label text="Learning Platform" styleClass="brand-subtitle"/>
+        <Button text="📊  Dashboard" styleClass="nav-button" maxWidth="Infinity" onAction="#handleBackToDashboard"/>
+        <Button text="📤  Upload Material" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToUpload"/>
+        <Button text="📝  View Notes" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToNotes"/>
+        <Button text="💬  Ask My Notes" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToAskNotes"/>
+        <Button text="🔄  Revision" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToRevision"/>
+        <Button text="🎓  CSE1007 Demo" styleClass="nav-button-active,nav-button" maxWidth="Infinity"/>
+        <Button text="⚙  Settings" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToSettings"/>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Button text="🚪  Logout" styleClass="nav-button" maxWidth="Infinity" onAction="#handleLogout"/>
+    </VBox>
+
+    <!-- Content -->
+    <VBox HBox.hgrow="ALWAYS" spacing="0" styleClass="content-area">
+        <HBox styleClass="topbar" alignment="CENTER_LEFT">
+            <VBox>
+                <Label text="CSE1007 — Technical Demonstration" styleClass="screen-title"/>
+                <Label text="Java Programming syllabus compliance verification" styleClass="screen-subtitle"/>
+            </VBox>
+        </HBox>
+
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="16" style="-fx-padding: 28;">
+
+                <!-- System Status -->
+                <HBox spacing="16">
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="6">
+                        <Label text="Database Connection" styleClass="card-title"/>
+                        <Label fx:id="dbStatusLabel" text="Checking..." style="-fx-font-weight: bold;"/>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="6">
+                        <Label text="Thread Pool" styleClass="card-title"/>
+                        <Label fx:id="threadPoolStatusLabel" text="Checking..." style="-fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- OOP Concepts -->
+                <VBox styleClass="card" spacing="8">
+                    <Label text="Object-Oriented Programming Concepts" styleClass="card-title"/>
+                    <Label text="✅ Classes &amp; Objects — User, Student, Document, Topic, SubTopic, Summary, etc." style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Encapsulation — Private fields + getters/setters across all model classes" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Inheritance — StudyMaterial → PDFMaterial, DOCXMaterial, TextMaterial; User → Student" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Polymorphism — DocumentParser interface with PDF/DOCX/Text implementations; AIProvider" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Abstraction — Abstract StudyMaterial class; Repository&lt;T&gt; interface; AIProvider interface" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Interfaces — DocumentParser, Summarizer, TopicExtractor, Repository&lt;T&gt;, AIProvider" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                </VBox>
+
+                <!-- Java Features -->
+                <VBox styleClass="card" spacing="8">
+                    <Label text="Core Java Features" styleClass="card-title"/>
+                    <Label text="✅ Exception Handling — Custom hierarchy: StudySphereException → AIServiceException, DatabaseException, etc." style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Collections Framework — HashMap, ArrayList, PriorityQueue, ConcurrentHashMap, TreeMap" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Multithreading — ThreadPoolManager (ExecutorService), DocumentProcessingTask (Callable), CompletableFuture" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ File Handling — PDFBox for PDF, POI for DOCX, NIO for TXT; FileInputStream" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Networking — HTTP client for LLM API calls in LLMAPIProvider" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                </VBox>
+
+                <!-- Architecture -->
+                <VBox styleClass="card" spacing="8">
+                    <Label text="Architecture &amp; Frameworks" styleClass="card-title"/>
+                    <Label text="✅ MVC Architecture — Model (domain classes) → Controller (JavaFX/Servlet) → View (FXML/JSP)" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ DAO Pattern — Repository&lt;T&gt; interface → BaseDAO → UserDAO, DocumentDAO, TopicDAO, etc." style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Service Layer — AuthService, DocumentService, TopicService, RevisionService, QuizService" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ JDBC — PreparedStatement, try-with-resources, HikariCP connection pooling" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ JavaFX — 10 FXML views with controllers, CSS theming, property bindings" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Servlets — 12 Jakarta Servlet classes with @WebServlet annotations" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ JSP — 12 JSP pages with JSTL, EL expressions, form processing" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                    <Label text="✅ Database — PostgreSQL with 15 tables, FK constraints, indexes" style="-fx-text-fill: #6ee7b7;" wrapText="true"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+</HBox>

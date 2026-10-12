@@ -1,0 +1,271 @@
+/* ====================================================================
+   StudySphere Desktop UI Stylesheet
+   Modern Dark Navy & Slate Professional Academic Theme
+   ==================================================================== */
+
+.root {
+    -fx-font-family: "Segoe UI", "Inter", "Roboto", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #0b1120;
+    -fx-text-fill: #f8fafc;
+}
+
+/* --- Sidebar Navigation --- */
+.sidebar {
+    -fx-background-color: #0f172a;
+    -fx-border-color: #1e293b;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 24 16 24 16;
+}
+
+.brand-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #38bdf8;
+    -fx-padding: 0 0 4 8;
+}
+
+.brand-subtitle {
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #94a3b8;
+    -fx-padding: 0 0 20 8;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 16 12 16;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #38bdf8;
+}
+
+.nav-button-active {
+    -fx-background-color: #1e3a8a;
+    -fx-text-fill: #60a5fa;
+    -fx-font-weight: 700;
+}
+
+/* --- Header & Top Bar --- */
+.topbar {
+    -fx-background-color: #0f172a;
+    -fx-border-color: #1e293b;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 16 28 16 28;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.screen-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #f8fafc;
+}
+
+.screen-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* --- Content Container & Cards --- */
+.content-area {
+    -fx-background-color: #0b1120;
+    -fx-padding: 28;
+}
+
+.card {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4);
+}
+
+.card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #f1f5f9;
+    -fx-padding: 0 0 10 0;
+}
+
+.card-number {
+    -fx-font-size: 32px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #38bdf8;
+}
+
+.card-caption {
+    -fx-font-size: 12px;
+    -fx-text-fill: #94a3b8;
+}
+
+/* --- Primary & Secondary Buttons --- */
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.btn-success {
+    -fx-background-color: #059669;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.btn-success:hover {
+    -fx-background-color: #047857;
+}
+
+.btn-secondary {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 10 18 10 18;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #475569;
+}
+
+/* --- Text Fields & Controls --- */
+.text-field, .password-field, .text-area {
+    -fx-background-color: #0f172a;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #f8fafc;
+    -fx-prompt-text-fill: #64748b;
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #38bdf8;
+    -fx-background-color: #0f172a;
+}
+
+/* --- Badges & Tags --- */
+.badge-critical {
+    -fx-background-color: #7f1d1d;
+    -fx-text-fill: #fca5a5;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12px;
+}
+
+.badge-high {
+    -fx-background-color: #78350f;
+    -fx-text-fill: #fcd34d;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12px;
+}
+
+.badge-medium {
+    -fx-background-color: #1e3a8a;
+    -fx-text-fill: #93c5fd;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12px;
+}
+
+.badge-mastered {
+    -fx-background-color: #064e3b;
+    -fx-text-fill: #6ee7b7;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12px;
+}
+
+.keyword-tag {
+    -fx-background-color: #334155;
+    -fx-text-fill: #38bdf8;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12px;
+}
+
+/* --- TreeView & ListView --- */
+.tree-view, .list-view {
+    -fx-background-color: #0f172a;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 6;
+}
+
+.tree-cell, .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+    -fx-padding: 8 10 8 10;
+    -fx-background-radius: 6px;
+}
+
+.tree-cell:hover, .list-cell:hover {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #38bdf8;
+}
+
+.tree-cell:selected, .list-cell:selected {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: #ffffff;
+}
+
+/* --- Progress Bar --- */
+.progress-bar {
+    -fx-accent: #38bdf8;
+    -fx-background-radius: 8px;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8px;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: linear-gradient(to right, #2563eb, #38bdf8);
+    -fx-background-radius: 8px;
+}
+
+/* --- ScrollBar --- */
+.scroll-bar:vertical {
+    -fx-background-color: #0b1120;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #334155;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #475569;
+}

@@ -1,0 +1,75 @@
+# Operating Systems: Concepts, Architecture and Algorithms
+Course Code: CSE2005 / CSE1007 Companion Notes
+
+## 1. Process Management and Concurrency
+
+A process is an instance of a program in execution. It contains the program code (text section), current activity represented by program counter and processor registers, stack containing temporary data (function parameters, return addresses, local variables), data section containing global variables, and heap for dynamically allocated memory.
+
+### Process States
+A process moves through distinct lifecycle states during execution:
+1. New: The process is being created.
+2. Ready: The process is loaded in main memory and waiting to be assigned to a CPU.
+3. Running: Instructions are being executed on the CPU core.
+4. Waiting / Blocked: The process is waiting for some event or I/O completion.
+5. Terminated: The process has finished execution and resources are reclaimed.
+
+### Process Control Block (PCB)
+Each process is represented in the operating system by a Process Control Block (PCB).
+- Process ID (PID): Unique numeric identifier for the process.
+- Process State: Current status (Ready, Running, Waiting).
+- Program Counter: Address of the next machine instruction to execute.
+- CPU Registers: Accumulators, index registers, stack pointers, and condition codes.
+- CPU Scheduling Information: Process priority, scheduling queue pointers.
+- Memory Management Information: Base and limit registers, page tables, or segment tables.
+- Accounting Information: CPU time consumed, clock time elapsed, time limits.
+- I/O Status Information: List of open files and allocated I/O devices.
+
+### CPU Scheduling Algorithms
+CPU scheduling is the basis of multiprogrammed operating systems.
+- First-Come, First-Served (FCFS): Non-preemptive algorithm where the process requesting CPU first is allocated first. Convoy effect occurs when short processes wait behind long CPU bursts.
+- Shortest Job First (SJF): Associates each process with its next CPU burst length. Optimal average waiting time but requires predicting future CPU burst durations using exponential smoothing formula: tau_{n+1} = alpha * t_n + (1 - alpha) * tau_n.
+- Round Robin (RR): Preemptive scheduling designed for time-sharing systems. Each ready process is assigned a small CPU time slice or quantum q (typically 10-100 ms). Ready queue is treated as a FIFO circular queue.
+- Priority Scheduling: CPU is allocated to process with highest priority. Starvation of low-priority processes is prevented through aging (gradually increasing priority over wait duration).
+
+## 2. Memory Management and Virtual Memory
+
+Memory management ensures fast access to code and data while providing isolation between concurrent processes.
+
+### Contiguous vs Non-Contiguous Allocation
+- Contiguous Allocation: Each process is contained in a single contiguous section of memory. Suffers from external fragmentation (total free memory exceeds request but is not contiguous).
+- Paging: Non-contiguous physical memory allocation. Physical memory is broken into fixed-size frames (e.g., 4 KB). Logical address space is divided into equal-sized pages. Address translation uses a page table: Logical Address = (Page Number p, Offset d).
+
+### Virtual Memory and Demand Paging
+Virtual memory separates user logical memory from physical memory, allowing execution of processes not entirely in memory.
+- Page Fault: Trap raised by hardware when a thread accesses an invalid page entry. Operating system allocates free frame, reads page from backing store, updates page table, and restarts faulting instruction.
+- Effective Access Time (EAT) formula: EAT = (1 - p) * ma + p * (Page Fault Service Time), where p is page fault rate and ma is memory access time.
+
+### Page Replacement Algorithms
+When memory is over-allocated, a page replacement algorithm chooses a victim frame to swap out.
+- FIFO: Replaces the oldest page. Suffers from Belady's Anomaly (more page frames can result in more page faults).
+- Optimal (OPT): Replaces page that will not be used for the longest period in the future. Serves as theoretical benchmark.
+- Least Recently Used (LRU): Replaces the page that has not been referenced for the longest time in past. Approximates OPT and does not suffer from Belady's Anomaly.
+- Clock / Second-Chance Algorithm: FIFO variant with reference bit inspection.
+
+## 3. Deadlock Characterization and Handling
+
+A deadlock occurs when a set of processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process in the set.
+
+### Coffman Conditions
+Four conditions must hold simultaneously for a deadlock to arise:
+1. Mutual Exclusion: At least one resource must be held in a non-shareable mode.
+2. Hold and Wait: A process must hold at least one resource and wait to acquire additional resources held by other processes.
+3. No Preemption: Resources cannot be forcibly preempted; they are released only voluntarily by the holding process.
+4. Circular Wait: A closed chain of processes P0, P1, ..., Pn exists such that P0 waits for P1, P1 waits for P2, and Pn waits for P0.
+
+### Deadlock Handling Strategies
+- Deadlock Prevention: Negate at least one of the four Coffman conditions (e.g., impose global linear resource ordering to prevent circular wait).
+- Deadlock Avoidance: Operating system dynamically examines resource allocation state to ensure safe state persists. Banker's Algorithm uses Available, Max, Allocation, and Need matrices (Need = Max - Allocation).
+- Deadlock Detection and Recovery: Maintain Resource Allocation Graph (RAG) and check for cycles; terminate processes or preempt resources to break cycle.
+- Ignorance (Ostrich Algorithm): Assume deadlocks never occur; used by most general-purpose operating systems when frequency is low.
+
+## 4. File Systems and Storage
+
+A file is an abstract contiguous logical address space mapped to physical disk blocks.
+- Directory Structures: Single-level, two-level, tree-structured, and acyclic graph directories.
+- Allocation Methods: Contiguous (fast sequential access, suffers from external fragmentation), Linked (pointer chain, slow random access), Indexed (inode index blocks supporting fast direct block mapping).

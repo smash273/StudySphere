@@ -1,0 +1,61 @@
+# Database Management Systems: Principles, Relational Theory and Architecture
+Course Code: CSE2004 / CSE1007 Companion Notes
+
+## 1. Relational Model and Integrity Constraints
+
+The relational model organizes data into two-dimensional relations (tables) consisting of rows (tuples) and columns (attributes).
+
+### Relational Schema Concepts
+- Domain: Set of permitted atomic scalar values for an attribute.
+- Tuple: Ordered list of attribute values representing a single entity record.
+- Relation Instance: Specific snapshot of tuples in a relation at an instant of time.
+- Candidate Key: Minimal superkey having the uniqueness property with no redundant attributes.
+- Primary Key: Selected candidate key that uniquely identifies tuples in a relation (cannot accept NULL values).
+- Foreign Key: Attribute in referencing relation matching primary key of referenced relation, establishing referential integrity.
+
+### Integrity Rules
+1. Entity Integrity: No component of primary key may be NULL.
+2. Referential Integrity: Foreign key value must either match existing primary key in referenced table or be NULL.
+3. Domain Integrity: Values must adhere to data type and check constraints.
+
+## 2. Normalization and Functional Dependencies
+
+Normalization eliminates data redundancy and prevents insertion, update, and deletion anomalies.
+
+### Functional Dependency (FD)
+Given relation R, attribute set X functionally determines Y (X -> Y) if whenever two tuples agree on X, they must also agree on Y.
+
+### Normal Forms
+- First Normal Form (1NF): All attribute domains are atomic and repeat groups/nested collections are eliminated.
+- Second Normal Form (2NF): Relation is in 1NF and every non-prime attribute is fully functionally dependent on every candidate key (no partial functional dependency).
+- Third Normal Form (3NF): Relation is in 2NF and no non-prime attribute is transitively dependent on candidate keys. Equivalently, for every non-trivial FD X -> Y, either X is a superkey or Y is a prime attribute.
+- Boyce-Codd Normal Form (BCNF): Relation is in 3NF and for every non-trivial FD X -> Y, X must strictly be a superkey.
+
+## 3. Transaction Processing and ACID Properties
+
+A transaction is a logical unit of database work consisting of one or more read and write operations.
+
+### ACID Properties
+- Atomicity: All operations in transaction succeed together or all changes are rolled back completely ("All-or-Nothing").
+- Consistency: Execution of transaction preserves database integrity constraints and business invariants.
+- Isolation: Intermediate states of concurrent transactions are shielded from each other.
+- Durability: Once transaction commits, its effects persist permanently in durable non-volatile storage, even during system crashes.
+
+### Transaction Isolation Levels (SQL Standard)
+1. Read Uncommitted: Permits dirty reads (reading uncommitted data modified by concurrent transaction).
+2. Read Committed: Prevents dirty reads; allows non-repeatable reads.
+3. Repeatable Read: Guarantees repeated reads in transaction yield identical values; allows phantom tuples.
+4. Serializable: Full logical isolation equivalent to serial sequential order; eliminates anomalies at performance cost.
+
+## 4. Concurrency Control and Recovery
+
+Concurrent transactions must be scheduled to preserve conflict serializability without deadlocks.
+
+### Two-Phase Locking (2PL)
+Guarantees conflict serializability:
+1. Growing Phase: Transaction acquires shared (S) or exclusive (X) locks without releasing any lock.
+2. Shrinking Phase: Transaction releases acquired locks without acquiring any new lock.
+- Strict 2PL: Holds all exclusive locks until transaction commits or aborts, preventing cascading rollbacks.
+
+### Indexing and Storage
+- B-Tree / B+ Tree: Self-balancing multi-way search tree. All leaf nodes in B+ tree are linked sequentially, providing O(log N) lookup and high throughput for range queries.

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToWidth="true" stylesheets="@../../css/styles.css"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.studysphere.javafx.controller.RegisterController"
+            style="-fx-background-color: #0b1120; -fx-background: #0b1120;">
+
+    <VBox alignment="CENTER" spacing="0" style="-fx-background-color: #0b1120; -fx-padding: 30;">
+
+        <VBox alignment="CENTER" spacing="12" maxWidth="420"
+              style="-fx-background-color: #1e293b; -fx-background-radius: 16; -fx-border-radius: 16; -fx-border-color: #334155; -fx-padding: 36;">
+
+            <Label text="StudySphere" styleClass="brand-title" style="-fx-font-size: 28px;"/>
+            <Label text="Student Registration" styleClass="brand-subtitle" style="-fx-padding: 0 0 10 0;"/>
+
+            <Label text="Full Name" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <TextField fx:id="fullNameField" promptText="Your full name"/>
+
+            <Label text="Username" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <TextField fx:id="usernameField" promptText="Choose a username"/>
+
+            <Label text="Email" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <TextField fx:id="emailField" promptText="your.email@university.edu"/>
+
+            <Label text="Password" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <PasswordField fx:id="passwordField" promptText="Choose a strong password"/>
+
+            <Label text="Student ID" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <TextField fx:id="studentIdField" promptText="e.g. 21BCE1234"/>
+
+            <Label text="Enrollment Number" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <TextField fx:id="enrollmentNoField" promptText="e.g. EN2021001"/>
+
+            <Label text="Major / Branch" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <TextField fx:id="majorField" promptText="e.g. Computer Science"/>
+
+            <Label text="Semester" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+            <Spinner fx:id="semesterSpinner" maxWidth="Infinity"/>
+
+            <Label fx:id="errorLabel" text="" style="-fx-text-fill: #ef4444; -fx-font-size: 12px;" wrapText="true"/>
+
+            <Button fx:id="registerButton" text="Create Account" onAction="#handleRegister" styleClass="btn-success"
+                    maxWidth="Infinity" style="-fx-padding: 12 0 12 0;"/>
+
+            <Hyperlink text="Already have an account? Sign in" onAction="#handleGoToLogin"
+                       style="-fx-text-fill: #38bdf8;"/>
+        </VBox>
+    </VBox>
+</ScrollPane>

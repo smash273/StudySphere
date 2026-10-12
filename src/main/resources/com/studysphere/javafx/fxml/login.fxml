@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="0" stylesheets="@../../css/styles.css"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.studysphere.javafx.controller.LoginController"
+      style="-fx-background-color: #0b1120;" prefWidth="500" prefHeight="600">
+
+    <VBox alignment="CENTER" spacing="16" maxWidth="380"
+          style="-fx-background-color: #1e293b; -fx-background-radius: 16; -fx-border-radius: 16; -fx-border-color: #334155; -fx-padding: 40;">
+
+        <!-- Branding -->
+        <Label text="StudySphere" styleClass="brand-title" style="-fx-font-size: 32px;"/>
+        <Label text="AI-Powered Learning Platform" styleClass="brand-subtitle" style="-fx-padding: 0 0 20 0;"/>
+
+        <!-- Username -->
+        <Label text="Username" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+        <TextField fx:id="usernameField" promptText="Enter your username" styleClass="text-field"/>
+
+        <!-- Password -->
+        <Label text="Password" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+        <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="password-field"/>
+
+        <!-- Error Label -->
+        <Label fx:id="errorLabel" text="" style="-fx-text-fill: #ef4444; -fx-font-size: 12px;" wrapText="true"/>
+
+        <!-- Login Button -->
+        <Button fx:id="loginButton" text="Sign In" onAction="#handleLogin" styleClass="btn-primary"
+                maxWidth="Infinity" style="-fx-padding: 12 0 12 0;"/>
+
+        <!-- Loading -->
+        <ProgressIndicator fx:id="loadingIndicator" maxWidth="32" maxHeight="32"/>
+
+        <!-- Register Link -->
+        <Hyperlink text="Don't have an account? Register here" onAction="#handleGoToRegister"
+                   style="-fx-text-fill: #38bdf8; -fx-font-size: 13px;"/>
+    </VBox>
+</VBox>

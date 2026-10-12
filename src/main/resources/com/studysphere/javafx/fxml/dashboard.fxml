@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.studysphere.javafx.controller.DashboardController" style="-fx-background-color: #0b1120;">
+
+    <!-- Sidebar -->
+    <VBox prefWidth="220" spacing="4" styleClass="sidebar">
+        <Label text="StudySphere" styleClass="brand-title"/>
+        <Label text="Learning Platform" styleClass="brand-subtitle"/>
+        <Button text="📊  Dashboard" styleClass="nav-button-active,nav-button" maxWidth="Infinity"/>
+        <Button text="📤  Upload Material" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToUpload"/>
+        <Button text="📝  View Notes" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToNotes"/>
+        <Button text="💬  Ask My Notes" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToAskNotes"/>
+        <Button text="🔄  Revision" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToRevision"/>
+        <Button text="🎓  CSE1007 Demo" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToCSE1007"/>
+        <Button text="⚙  Settings" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToSettings"/>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Button text="🚪  Logout" styleClass="nav-button" maxWidth="Infinity" onAction="#handleLogout"/>
+    </VBox>
+
+    <!-- Content -->
+    <VBox HBox.hgrow="ALWAYS" spacing="20" styleClass="content-area">
+        <!-- Top Bar -->
+        <HBox styleClass="topbar" spacing="20" alignment="CENTER_LEFT">
+            <VBox>
+                <Label fx:id="greetingLabel" text="Welcome back" styleClass="screen-title"/>
+                <Label text="Your academic dashboard at a glance" styleClass="screen-subtitle"/>
+            </VBox>
+        </HBox>
+
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="20" style="-fx-padding: 20;">
+                <!-- Stats Cards Row -->
+                <HBox spacing="16">
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                        <Label text="Documents" styleClass="card-caption"/>
+                        <Label fx:id="docCountLabel" text="0" styleClass="card-number"/>
+                        <Label text="Uploaded materials" styleClass="card-caption"/>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                        <Label text="Topics" styleClass="card-caption"/>
+                        <Label fx:id="topicCountLabel" text="0" styleClass="card-number"/>
+                        <Label text="Extracted topics" styleClass="card-caption"/>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                        <Label text="Revised" styleClass="card-caption"/>
+                        <Label fx:id="revisedCountLabel" text="0" styleClass="card-number"/>
+                        <Label text="Topics reviewed" styleClass="card-caption"/>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="4">
+                        <Label text="Completion" styleClass="card-caption"/>
+                        <Label fx:id="completionPercentLabel" text="0%" styleClass="card-number"/>
+                        <ProgressBar fx:id="completionProgressBar" progress="0" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Lists Row -->
+                <HBox spacing="16">
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
+                        <Label text="Recent Documents" styleClass="card-title"/>
+                        <ListView fx:id="recentDocsList" prefHeight="200"/>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
+                        <Label text="Recommended for Revision" styleClass="card-title"/>
+                        <ListView fx:id="recommendedTopicsList" prefHeight="200"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+</HBox>

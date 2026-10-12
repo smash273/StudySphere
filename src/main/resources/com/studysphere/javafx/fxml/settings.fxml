@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.studysphere.javafx.controller.SettingsController" style="-fx-background-color: #0b1120;">
+
+    <!-- Sidebar -->
+    <VBox prefWidth="220" spacing="4" styleClass="sidebar">
+        <Label text="StudySphere" styleClass="brand-title"/>
+        <Label text="Learning Platform" styleClass="brand-subtitle"/>
+        <Button text="📊  Dashboard" styleClass="nav-button" maxWidth="Infinity" onAction="#handleBackToDashboard"/>
+        <Button text="📤  Upload Material" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToUpload"/>
+        <Button text="📝  View Notes" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToNotes"/>
+        <Button text="💬  Ask My Notes" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToAskNotes"/>
+        <Button text="🔄  Revision" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToRevision"/>
+        <Button text="🎓  CSE1007 Demo" styleClass="nav-button" maxWidth="Infinity" onAction="#handleGoToCSE1007"/>
+        <Button text="⚙  Settings" styleClass="nav-button-active,nav-button" maxWidth="Infinity"/>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Button text="🚪  Logout" styleClass="nav-button" maxWidth="Infinity" onAction="#handleLogout"/>
+    </VBox>
+
+    <!-- Content -->
+    <VBox HBox.hgrow="ALWAYS" spacing="0" styleClass="content-area">
+        <HBox styleClass="topbar" alignment="CENTER_LEFT">
+            <VBox>
+                <Label text="Settings &amp; Configuration" styleClass="screen-title"/>
+                <Label text="Manage AI provider, database, and system settings" styleClass="screen-subtitle"/>
+            </VBox>
+        </HBox>
+
+        <VBox spacing="20" style="-fx-padding: 28;">
+            <!-- AI Configuration -->
+            <VBox styleClass="card" spacing="12">
+                <Label text="AI Provider Configuration" styleClass="card-title"/>
+                <Label text="Provider" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+                <ComboBox fx:id="aiProviderSelector" maxWidth="Infinity"/>
+                <Label text="API Key (leave blank for fallback mode)" style="-fx-text-fill: #94a3b8; -fx-font-size: 12px;"/>
+                <TextField fx:id="apiKeyField" promptText="sk-..." />
+                <Button text="Save AI Settings" onAction="#handleSaveSettings" styleClass="btn-primary"/>
+            </VBox>
+
+            <!-- Database Status -->
+            <VBox styleClass="card" spacing="8">
+                <Label text="Database Status" styleClass="card-title"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="URL:" style="-fx-text-fill: #94a3b8;"/>
+                    <Label fx:id="dbUrlLabel" text="" style="-fx-text-fill: #f8fafc;"/>
+                </HBox>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="Status:" style="-fx-text-fill: #94a3b8;"/>
+                    <Label fx:id="dbStatusLabel" text="" style="-fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+
+            <!-- System -->
+            <VBox styleClass="card" spacing="8">
+                <Label text="System Settings" styleClass="card-title"/>
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="Max Upload Size:" style="-fx-text-fill: #94a3b8;"/>
+                    <Label fx:id="uploadLimitLabel" text="" style="-fx-text-fill: #f8fafc;"/>
+                </HBox>
+                <Button text="Re-seed Sample Academic Data" onAction="#handleReSeedData" styleClass="btn-secondary"/>
+            </VBox>
+        </VBox>
+    </VBox>
+</HBox>

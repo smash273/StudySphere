@@ -1,0 +1,79 @@
+/* StudySphere Web Application Stylesheet — Dark Navy Academic Theme */
+:root {
+    --bg-primary: #0b1120; --bg-secondary: #0f172a; --bg-card: #1e293b;
+    --border: #334155; --text-primary: #f8fafc; --text-secondary: #94a3b8;
+    --accent: #38bdf8; --accent-dark: #2563eb; --success: #10b981;
+    --danger: #ef4444; --warning: #f59e0b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Navbar */
+.navbar { background: var(--bg-secondary); border-bottom: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; gap: 24px; }
+.navbar .brand { font-size: 20px; font-weight: 800; color: var(--accent); }
+.navbar a { color: var(--text-secondary); font-weight: 600; font-size: 14px; padding: 8px 14px; border-radius: 6px; }
+.navbar a:hover { background: var(--bg-card); color: var(--accent); text-decoration: none; }
+.navbar .spacer { flex: 1; }
+
+/* Container */
+.container { max-width: 1100px; margin: 0 auto; padding: 28px; }
+.page-title { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+.page-subtitle { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
+
+/* Cards */
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+.card-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.card-number { font-size: 32px; font-weight: 800; color: var(--accent); }
+.card-caption { font-size: 12px; color: var(--text-secondary); }
+
+/* Grid */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+
+/* Forms */
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; color: var(--text-secondary); font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="file"],
+select, textarea {
+    width: 100%; padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text-primary); font-size: 14px; outline: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+
+/* Buttons */
+.btn { display: inline-block; padding: 10px 20px; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; }
+.btn-primary { background: var(--accent-dark); color: #fff; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-success { background: var(--success); color: #fff; }
+.btn-secondary { background: var(--border); color: var(--text-primary); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; }
+th { background: var(--bg-secondary); color: var(--text-secondary); font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+tr:hover td { background: rgba(56,189,248,0.05); }
+
+/* Badges */
+.badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+.badge-success { background: #064e3b; color: #6ee7b7; }
+.badge-warning { background: #78350f; color: #fcd34d; }
+.badge-danger { background: #7f1d1d; color: #fca5a5; }
+.badge-info { background: #1e3a8a; color: #93c5fd; }
+
+/* Keyword tags */
+.keyword-tag { display: inline-block; background: var(--border); color: var(--accent); padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 3px; }
+
+/* Alert */
+.alert { padding: 14px 18px; border-radius: 8px; margin-bottom: 16px; font-weight: 600; }
+.alert-success { background: #064e3b; color: #6ee7b7; border: 1px solid #10b981; }
+.alert-error { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
+
+/* Login/Register centered */
+.auth-wrapper { display: flex; justify-content: center; align-items: center; min-height: calc(100vh - 60px); }
+.auth-card { width: 420px; }
+
+/* Quiz options */
+.quiz-option { display: block; padding: 10px 14px; margin: 4px 0; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+.quiz-option:hover { border-color: var(--accent); }
+.quiz-option input { margin-right: 10px; }

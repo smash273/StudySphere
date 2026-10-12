@@ -1,0 +1,74 @@
+# Advanced Java Programming: Core Concepts, Frameworks and Enterprise Architecture
+Course Code: CSE1007 — Java Programming
+
+## 1. Object-Oriented Programming (OOP) Principles
+
+Java is an object-oriented programming language enforcing robust type safety, platform independence via the Java Virtual Machine (JVM), and automatic memory management via garbage collection.
+
+### Core OOP Tenets
+1. Encapsulation: Bundling data (attributes) and methods that operate on the data into a cohesive class, while restricting direct access to internal components using access modifiers (private, protected, public, package-private).
+2. Inheritance: Mechanism where a child class acquires the fields and behaviors of a parent class using the `extends` keyword. Java supports single class inheritance and multiple interface implementation (`implements`).
+3. Polymorphism: Ability of an entity to take multiple forms:
+   - Compile-time (Static) Polymorphism: Method overloading (same method name, different parameter signature in the same class).
+   - Runtime (Dynamic) Polymorphism: Method overriding (child class provides specific implementation of parent method; resolved via dynamic method dispatch at runtime).
+4. Abstraction: Hiding internal implementation complexities and exposing only essential functional interfaces using abstract classes and interfaces.
+
+## 2. Collections Framework
+
+The Java Collections Framework (`java.util`) provides standard architectures for storing and manipulating groups of objects.
+
+### Hierarchy
+- `Collection<E>`: Root interface.
+  - `List<E>`: Ordered collection with index-based access (`ArrayList`, `LinkedList`, `Vector`).
+  - `Set<E>`: Unordered collection prohibiting duplicate elements (`HashSet`, `LinkedHashSet`, `TreeSet`).
+  - `Queue<E>`: FIFO or priority ordering (`PriorityQueue`, `ArrayDeque`).
+- `Map<K, V>`: Key-value pair associative mappings (`HashMap`, `LinkedHashMap`, `TreeMap`, `ConcurrentHashMap`).
+
+### Thread-Safe Collections
+`ConcurrentHashMap` uses lock striping / synchronized buckets to allow high concurrent read and write throughput without global locking.
+
+## 3. Exception Handling
+
+Exceptions represent abnormal conditions that disrupt standard execution flow.
+
+### Exception Hierarchy
+- `Throwable`: Superclass of all errors and exceptions.
+  - `Error`: Serious hardware/JVM failures not meant to be caught (`OutOfMemoryError`, `StackOverflowError`).
+  - `Exception`: Conditions that an application can reasonably handle.
+    - Checked Exceptions: Subclasses of `Exception` (excluding `RuntimeException`) checked at compile-time (`IOException`, `SQLException`). Must be caught or declared using `throws`.
+    - Unchecked Exceptions: Subclasses of `RuntimeException` occurring at runtime (`NullPointerException`, `IllegalArgumentException`, `ArithmeticException`).
+
+### Try-With-Resources
+Introduced in Java 7 for automatic closing of objects implementing `java.lang.AutoCloseable`, eliminating resource leaks.
+
+## 4. Multithreading and Concurrency
+
+Java supports concurrent multithreaded processing natively via threads and high-level concurrency utilities.
+
+### Thread Creation
+1. Extending `java.lang.Thread` class and overriding `run()`.
+2. Implementing `java.lang.Runnable` functional interface and passing to `Thread` instance.
+3. Implementing `java.util.concurrent.Callable<V>` returning a value and throwing checked exceptions.
+
+### High-Level Concurrency Utilities (`java.util.concurrent`)
+- `ExecutorService`: Manages pool of worker threads (`Executors.newFixedThreadPool(int n)`).
+- `Future<V>`: Represents pending result of asynchronous computation.
+- `CompletableFuture<T>`: Reactive asynchronous pipeline with functional chaining (`thenApply`, `thenAccept`, `exceptionally`).
+
+## 5. JDBC and Relational Database Connectivity
+
+Java Database Connectivity (JDBC) standardizes relational database access across database vendors.
+
+### Core Interfaces
+- `DriverManager` / `DataSource`: Factory for creating database physical connections.
+- `Connection`: Represents active session with specific database.
+- `PreparedStatement`: Precompiled parameterized SQL statement preventing SQL injection and improving execution performance.
+- `ResultSet`: Cursor table over query result tuples.
+- Connection Pooling: High-performance connection reuse mechanisms like HikariCP eliminate connection handshake overhead.
+
+## 6. Servlets and JSP Architecture
+
+Jakarta Servlet specification enables server-side HTTP request handling.
+- Servlet Lifecycle: `init()`, `service()` (dispatches to `doGet`, `doPost`), and `destroy()`.
+- Session Tracking: `HttpSession` maintains user authentication across stateless HTTP requests.
+- MVC Pattern: Servlets act as Controllers, Java Beans as Models, and JSP pages as Views.
